@@ -1,0 +1,10 @@
+# Unity 실행 시 생기는 로그/크래시 파일
+*.log
+*.dmp
+crashes/
+VR_Kart_Simulator/VR_Kart_Simulator_Data/output_log.txt
+
+# OS 파일
+Thumbs.db
+desktop.ini
+.DS_Store

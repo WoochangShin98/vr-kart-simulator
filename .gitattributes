@@ -1,0 +1,9 @@
+* text=auto
+*.cs   text diff=csharp
+*.md   text
+*.exe  binary
+*.dll  binary
+*.assets binary
+*.resS binary
+level0 binary
+globalgamemanagers binary
