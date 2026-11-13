@@ -1,48 +1,48 @@
 # VR Kart Simulator
 
-Meta Quest 컨트롤러로 핸들과 페달을 조작해 카트를 운전하는 **VR 드라이빙 시뮬레이터**입니다.
-VR/AR 수업 프로젝트 (2024 가을).
+A **VR driving simulator** where you drive a kart by operating the steering wheel and pedals with Meta Quest controllers.
+Course project for a VR/AR class (Fall 2024).
 
-- **엔진:** Unity 2022.3.50f1
-- **플랫폼:** Windows PC VR (Meta Quest + Quest Link / Air Link)
+- **Engine:** Unity 2022.3.50f1
+- **Platform:** Windows PC VR (Meta Quest + Quest Link / Air Link)
 - **SDK:** Oculus Integration (OVRInput)
-- **에셋:** Low Poly Road Pack (BrokenVector), Modular Karts Pack
+- **Assets:** Low Poly Road Pack (BrokenVector), Modular Karts Pack
 
-## 실행 방법
-1. Meta Quest를 PC에 연결하고 **Meta Quest Link** 앱을 실행합니다.
-2. 저장소를 내려받고(Code → Download ZIP) `VR_Kart_Simulator/VR_Kart_Simulator.exe`를 실행합니다.
+## How to Run
+1. Connect your Meta Quest to the PC and launch the **Meta Quest Link** app.
+2. Download this repository (Code → Download ZIP) and run `VR_Kart_Simulator/VR_Kart_Simulator.exe`.
 
-> `VR_Kart_Simulator` 폴더 안의 파일은 모두 같이 있어야 실행됩니다.
+> All files inside the `VR_Kart_Simulator` folder must stay together for the game to run.
 
-## 조작법
+## Controls
 
-| 동작 | VR 컨트롤러 | 키보드 |
+| Action | VR Controller | Keyboard |
 |---|---|---|
-| 가속 | 오른손 검지 트리거 | `W` |
-| 후진 / 감속 | 왼손 검지 트리거 | `S` |
-| 조향 (핸들) | 양손 그립을 쥔 채 실제 핸들처럼 한쪽 손을 올리고 다른 손을 내리기 | `A` / `D` |
-| 조향 (간편) | 오른손 썸스틱 좌우 | — |
+| Accelerate | Right index trigger | `W` |
+| Reverse / Brake | Left index trigger | `S` |
+| Steer (wheel) | Hold both grip buttons and raise one hand while lowering the other, like turning a real steering wheel | `A` / `D` |
+| Steer (simple) | Right thumbstick left/right | — |
 
-아무 입력이 없으면 카트가 서서히 멈춥니다.
+With no input, the kart gradually slows to a stop.
 
-## 직접 작성한 스크립트 (`Scripts/`)
+## Custom Scripts (`Scripts/`)
 
-| 파일 | 역할 |
+| File | Description |
 |---|---|
-| `MoveKart.cs` | 가속·후진·감속, 속도에 비례한 회전 처리 |
-| `RotateSteering.cs` | 입력에 따라 3D 핸들 모델을 좌우로 회전 |
-| `WheelControl.cs` | 속도에 맞춰 바퀴를 굴리고 앞바퀴 조향각 적용 |
-| `PedalControl.cs` | 트리거를 당기면 페달 모델이 눌리는 애니메이션 |
-| `OVRControllerTracker.cs` | 양손 컨트롤러 위치를 추적하는 디버그용 스크립트 |
+| `MoveKart.cs` | Handles acceleration, reverse, deceleration, and speed-proportional turning |
+| `RotateSteering.cs` | Rotates the 3D steering wheel model left/right based on input |
+| `WheelControl.cs` | Spins the wheels according to speed and applies the front-wheel steering angle |
+| `PedalControl.cs` | Animates the pedal model being pressed when the trigger is pulled |
+| `OVRControllerTracker.cs` | Debug script that tracks the positions of both controllers |
 
-**핸들 조향 방식:** 양손 그립을 모두 쥐고 있을 때 두 컨트롤러의 높이 차이(`positionL.y - positionR.y`)가
-±3 cm를 넘으면 그 방향으로 회전합니다.
+**Steering mechanism:** While both grip buttons are held, the kart turns in the corresponding direction when the
+height difference between the two controllers (`positionL.y - positionR.y`) exceeds ±3 cm.
 
-## 폴더 구조
+## Project Structure
 ```
 ├─ README.md
-├─ Scripts/                     직접 작성한 C# 스크립트 (원본)
-└─ VR_Kart_Simulator/           Windows 빌드
+├─ Scripts/                     Custom C# scripts (source)
+└─ VR_Kart_Simulator/           Windows build
    ├─ VR_Kart_Simulator.exe
    ├─ VR_Kart_Simulator_Data/
    ├─ MonoBleedingEdge/
@@ -50,6 +50,6 @@ VR/AR 수업 프로젝트 (2024 가을).
    └─ UnityCrashHandler64.exe
 ```
 
-## 참고
-이 저장소에는 빌드 결과물과 직접 작성한 스크립트만 있습니다.
-Unity 프로젝트 전체(Oculus SDK, 스토어 에셋 포함)는 용량과 라이선스 문제로 포함하지 않았습니다.
+## Notes
+This repository contains only the build output and the custom scripts.
+The full Unity project (including the Oculus SDK and Asset Store assets) is not included due to size and licensing restrictions.
